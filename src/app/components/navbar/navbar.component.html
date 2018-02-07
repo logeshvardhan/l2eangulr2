@@ -1,0 +1,97 @@
+<div class="row">
+  <!-- Top Bar Start Desktop only-->
+  <!-- <div class="clearfix"></div> -->
+  <div id="top-bar" class="visible-lg visible-md hidden-xs hidden-sm top-bar-section top-bar-bg-color">
+        <div class="col-md-12">
+
+          <a routerLink="home">
+          <span class="logo_txt_dtop">Like2eat<sub class="betatxt_dtop">Beta</sub></span>
+          </a>
+        <!--   Top Social Icon -->
+          <div class="top-bar-links">
+           <ul class="list-unstyled list-inline">
+           <li><a href="" data-toggle="modal" data-target="#registerModal">
+           	<span class="glyphicon glyphicon-user"></span>Register</a></li>
+            <li><a href="">|</a></li>
+           <li><a href="" data-toggle="modal" data-target="#feedbackModal">
+            <span class="glyphicon glyphicon-edit"></span>Feedback</a></li>
+           </ul>
+           </div>
+        </div>
+
+  </div>
+  <!-- Top Bar End -->
+  <!----navbar------>
+
+     <div class="col-md-12">
+    <nav class="navbar navbar-default" role="navigation" id="header-navbar"> <!-- navbar start  -->
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-click" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+       		<i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <a class="navbar-brand  visible-xs visible-sm hidden-lg hidden-md" routerLink="home"><span class="logo_txt_mbl">Like2eat <sub class="betatxt_mbl">Beta</sub></span></a>
+        <a class="navbar-home-dtop visible-lg visible-md hidden-xs hidden-sm" routerLink="home"><span class="glyphicon glyphicon-home"></span></a>
+        <div class="visible-xs visible-sm hidden-lg hidden-md pull-right clsRightIcons">
+        	<a href="" style="color:white;">
+            <span>
+	        	<i class="glyphicon glyphicon-search clsSearchIcon" ng-click="searchOn = !searchOn"></i>
+        	</span>
+            </a>
+        	 &nbsp;&nbsp;
+           	<a href="" data-toggle="modal" data-target="#registerModal" style="color:white;">
+           	<span class="glyphicon glyphicon-user"></span></a>
+            &nbsp;&nbsp;
+            <a href="" data-toggle="modal" data-target="#feedbackModal" style="color:white;" class="feedbacks">
+            <span class="glyphicon glyphicon-edit"></span>
+            </a>
+         </div>
+      </div>
+<!-- {{config}} -->
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-click">
+        <ul class="nav navbar-nav" *ngFor="let menuitem of config?.main_menu">
+          <li class="dropdown" routerLinkActive="active"> <a routerLink="{{menuitem.menuToState}}" class="dropdown-toggle" data-toggle="dropdown" >{{menuitem.Menu_Item}}<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li *ngFor="let submenu of menuitem.Sub_Menu">
+              <a routerLink="{{submenu.toState}}"><img src="{{config.imagescommonpath}}/{{submenu.mnuimage}}" class="img-responsive menu-icon">{{submenu.smenu_item}}</a></li>
+              	<!-- <li *ngfor="let submenu in menuitem.Sub_Menu"><a routerLink={{submenu.toState}}> <img src="{{imagescommonpath}}/{{submenu.mnuimage}}" class="img-responsive menu-icon" />{{submenu.smenu_item}}</a></li> -->
+            </ul>
+          </li>
+        </ul>
+
+        <form class="navbar-form navbar-right" role="search" id="collapse-navbar" ng-submit="search(searchString)" autocomplete="on">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control searchField" uib-tooltip="*Search for Food, Nutrition and Diet etc.."
+              tooltip-placement="left"
+              placeholder="Search" ng-model="searchString" onkeypress="searchValue()">
+              <span class="input-group-btn"> <button class="btn btn-default form-btn">
+              <i class="glyphicon glyphicon-search"></i></button> </span> </div>
+          </div>
+        </form>
+     </div>  <!-- slide menu end  -->
+
+
+    </nav>
+  </div>
+	 <!-- nav bar end -->
+   <div class="col-md-12 visible-xs visible-sm hidden-lg hidden-md" ng-show="searchOn===true">
+      	<form class="form-group" role="search" id=" " ng-submit="search(searchString)" name="frmMain">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control searchField" placeholder="Search"
+              onkeypress="searchValue()" ng-model="searchString" autofocus>
+              <span class="input-group-btn"> <button class="btn btn-default form-btn"
+              uib-tooltip="*Please Enter search string.."
+              tooltip-placement="bottom"><i class="glyphicon glyphicon-search"></i></button> </span> </div>
+          </div>
+        </form>
+ 	</div>
+
+
+</div>

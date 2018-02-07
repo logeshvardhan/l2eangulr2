@@ -1,0 +1,46 @@
+
+<div class="row" id="page">
+<!-- {{subMenuContent|json}}.....{{filterBy}} -->
+	<div class="page-header-dr dr-page-header-bg">
+		<div class="container" *ngIf="subMenuContent">
+			<div class="col-md-12" *ngFor="let dietCond of subMenuContent | dietfilter: 'toState' :filterBy">
+				<h1 class="title text-resize"><span><img src="{{config.imagescommonpath}}/dr-title-icon.png">&nbsp;</span>Diet Recommendations By {{dietCond.Type_Name}}</h1>
+				<!-- {{childTitle}} -->
+
+			</div>
+		</div>
+	</div>
+
+<section id="about-us" class="page-section-dr dr-page-section-bg" data-animation="fadeInUp"><!--background-image-->
+
+<div class="container"><!--container-->
+	<div class="visible-md visible-lg ">
+		<ul class="nav nav-tabs  nav-justified">
+			<!-- {{subMenu.Sub_Menu}} -->
+			<!-- <li *ngFor="let cond of subMenu.Sub_Menu | filter: 'Goal' "> {{cond.smenu_item}}</li> -->
+
+			<li routerLink="{{dietCond.toState}}"
+			(click)="selectedTab(dietCond)"
+			*ngFor="let dietCond of subMenuContent" routerLinkActive="active"
+			 #elem id={{dietCond.Type_Name}}>
+			<a class="pointer" >
+			<!-- id:{{elem.id}}
+				 {{dietCond.Type_Name}} -->
+				<!--{{currentroute}} -->
+				<!-- {{dietCond | json}} -->
+				<img src="{{config.imagescommonpath}}/{{filterBy==dietCond.toState?
+				dietCond.tab_image2 :dietCond.tab_image}}"
+				class="img-responsive menu-icon"/>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<router-outlet ></router-outlet>
+</div><!--container-->
+
+</section><!--background-image-->
+
+
+
+</div>

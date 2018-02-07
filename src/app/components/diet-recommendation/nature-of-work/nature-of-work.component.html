@@ -1,0 +1,19 @@
+
+<div class="row" *ngIf="subMenuContent"><!--row---->
+
+<!-- {{dietrecom}} -->
+     <!------desktop----- -->
+ 	 <div class="text-center"
+	*ngFor="let subMenu of subMenuContent | dietfilter: 'toState':filterBy">
+  		<div class="col-md-3 col-sm-6 col-xs-6  col-lg-3 visible-md visible-lg visible-sm visible-xs" *ngFor="let cond of subMenu?.Values"><!--thumbnail---->
+	      <div class="img-continer">
+          <!-- <a routerLink="listproductsbyfilter({fltrval:'higconspgrp~[&quot;{{cond.condition}}&quot;]~in;',crossflt:'filter',
+          mainflt:'dietclass',qrycond:'and', pgNumber:'0',pgSize:'{{pagesize}}',dietgrp:'higconspgrp'})"> -->
+            <a routerLink="/list/higconspgrp~[&quot;{{cond.condition}}&quot;]~in;/filter/dietclass/and/1">
+          <div class="img-part"> <img src="{{config.imagescommonpath}}/{{cond.image}}" class="img-responsive" alt="food for nutrition">{{cond.condition}}</div>
+	        </a> </div>
+        </div>
+ 	</div>
+      <!------mobile----- -->
+
+</div>

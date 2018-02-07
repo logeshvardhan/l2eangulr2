@@ -1,0 +1,21 @@
+<div><!--row-->
+
+<!-- config:{{config}} -->
+<!-- submenu:{{subMenuContent}} -->
+<!-- *ngFor="let nutri of subMenuContent | nutrifilter : filterByCondition" -->
+<div class="text-center" *ngFor="let nutri of subMenuContent">
+<!-- {{condition.type}} -->
+	<!-- {{subMenuContent | json}} -->
+
+	<div  class="col-md-3 col-sm-3  col-lg-3 visible-md visible-lg visible-sm visible-xs"
+	*ngIf="nutri.nutrientCategory == filterByCondition"><!--thumbnail-->
+	      <div class="img-continer">
+					<!-- <a  routerLink="listproductsbyfilter({fltrval:'nutriid~{{nutri.nutrientId}}~eq;',
+					crossflt:'filter',mainflt:'nutriclass',qrycond:'and', pgNumber:'0',pgSize:'{{pagesize}}'})"> -->
+					<a routerLink="/list/nutriid~{{nutri.nutrientId}}~eq;/filter/nutriclass/and/1">
+					<div class="img-part"> <img src="{{config.imagescommonpath}}/{{nutri.image}}"  class="img-responsive" alt="food for nutrition">{{nutri.nutrientName}}</div>
+	        </a> </div>
+        </div>
+</div>
+
+</div><!--row-->

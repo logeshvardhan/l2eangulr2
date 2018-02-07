@@ -1,0 +1,29 @@
+<p>
+  product-filter works!
+</p>
+<!-- Filter block start -->
+			<div id="filter_id" class="col-md-2 visible-md visible-lg hidden-sm hidden-xs clsFilterDropdown" ng-cloak >
+			  <!-- Subfilters:  {{sub_filters}}  -->
+			<!---desktop-code-->
+			  <div class="visible-lg visible-md hidden-xs hidden-sm left-filter_dtop">
+					<!-- collapse- -->
+					 <h4 style="margin:0px;">Refine By</h4><a href="" type="button" (click)="clearFilters(sub_filters)" style="color: #2874f0;font-size: 13px;font-weight: 500;
+    text-transform: capitalize;text-decoration: none;" ng-show="chkdstat==true">Clear All <!-- {{chkdstat}} --></a>
+                       <!--   Refine:    <input type="button" value="Clear All" ng-click="clearFilters(sub_filters)"/> -->
+					   <div class="panel panel-default" *ngFor="let subfltr of sub_filters">
+					    <div class="panel-heading" role="tab" >
+					      <h4 class="panel-title">
+					        <div role="button" data-toggle="collapse"  aria-expanded="true" aria-controls="test">
+					          {{subfltr.Filter_Name}} <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+					        </div>
+					      </h4>
+					    </div>
+
+					  </div>
+
+					<!--collapse--->
+					</div><!---desktop-code-->
+			</div>
+
+
+			<!-- Filter Block End  -->

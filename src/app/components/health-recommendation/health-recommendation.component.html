@@ -1,0 +1,47 @@
+
+<div class="row" id="page">
+
+	<div class="page-header-hr hr-page-header-bg">
+		<div class="container">
+			<div class="col-md-12">
+				<h1 class="title text-resize"><span><img src="{{config.imagescommonpath}}/hr-title-icon.png">&nbsp;</span>Health Recommendations for</h1>
+			</div>
+		</div>
+	</div>
+
+
+	<section id="about-us" class="page-section-hr hr-page-section-bg" 
+	data-animation="fadeInUp"><!--background-image-->
+	<!-- container -->
+	<div class="container">
+
+		<div class=" col-md-3 ol-lg-3 col-xs-6 col-sm-6 text-center" 
+		*ngFor="let submenu of subMenu.Sub_Menu">
+		<a routerLink="{{submenu.toState}}" style="text-decoration: none;">
+			<div style="padding:30px; line-height: 6em;"><img src="{{config.imagescommonpath}}/{{submenu.mnuimage2}}"></div>
+			<h4 class="overflow-text">{{submenu.smenu_item}}</h4>
+		</a>
+		<button class="btn btn-nv" routerLink="{{submenu.toState}}">View Products</button>
+		<p style="color:#fff;">&nbsp;</p>
+		<hr class="lightgreen" />
+		
+	</div>
+
+      <!-- <div class="col-md-3 col-sm-6  col-lg-3 col-xs-6 text-center" ng-repeat="submenu in mainmenu[3].Sub_Menu">
+      <a ui-sref="{{submenu.toState}}">
+          <div style="padding:30px; line-height: 6em;"><img src="{{commonpath}}/{{submenu.mnuimage2}}"></div>
+          <h4 class="hrecommen overflow-text">{{submenu.smenu_item}}</h4>
+          </a>
+           <button ui-sref="{{submenu.toState}}" class="btn btn-hr" >View Products</button>   
+          <hr class="lightgreen" />          
+               
+      </div> -->
+      
+      
+
+  </div>
+  <!--container-->
+</section><!--background-image-->
+
+
+</div>

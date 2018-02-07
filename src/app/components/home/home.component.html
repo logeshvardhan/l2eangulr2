@@ -1,0 +1,122 @@
+<app-slider></app-slider>
+<div class="row">
+	<div class="container"><!--container-->
+		<div class="special-feature visible-lg visible-md hidden-sm hidden-xs"><!--desktop-->
+			<!--About Us-->
+			<div class="section-title">
+				<h1 class="title"><span style="font-weight:300;">About Us</span></h1>
+			</div>
+			<!--About Us-->
+
+			<!--About Us paragarph-->
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<!-- Text -->
+					<p class="title-description">Welcome to Like2Eat.com - Your future food guide. We have just begun our journey to provide you the best of experience in food and nutrition in terms of knowledge, suggestions & recommendations. Kindly explore our first part to get a feel of it.....
+						This is our sincere effort to provide you the best in class knowledge base on food and nutrition.</p>
+					</div>
+				</div>
+				<!--About Us paragarph-->
+				
+				<!-- Special Feature Box 1 -->
+				<div class="col-md-3"  routerLink="/categories" *ngIf="config">
+					<div class="s-feature-box text-center">
+						<div class="mask-top">
+							<span><img src="{{config?.imagescommonpath}}/icon-nv.png"/></span>
+							<!-- Title -->
+							<h4>Nutritional Value<!--<a ui-sref="cathome"></a>--></h4>
+						</div>
+						<div class="mask-bottom">
+
+							<span><img src="{{config?.imagescommonpath}}/icon-nv-hover.png"/></span>
+							<!-- Title -->
+							<h4>Nutritional Value</h4>
+							<!-- Text -->
+							<p><span style="font-weight:300;">Get to know what nutritional value you get while eating different categories of food</span></p>
+						</div>
+					</div>
+				</div>
+				<!-- Special Feature Box 2 -->
+				<div class="col-md-3" routerLink="/diet-recommendation" *ngIf="config">
+					<div class="s-feature-box text-center">
+						<div class="mask-top">
+
+							<span><img src="{{config?.imagescommonpath}}/icon-dr.png"/></span>
+							<!-- Title -->
+							<h4>Diet Recommendations</h4>
+						</div>
+						<div class="mask-bottom">
+
+							<span><img src="{{config?.imagescommonpath}}/icon-dr-hover.png"/></span>
+							<!-- Title -->
+							<h4>Diet Recommendations</h4>
+							<!-- Text -->
+							<p><span style="font-weight:300;">View diet recommendation by medical condition, age & gender, goal nature of work and...</span></p>
+						</div>
+					</div>
+				</div>
+				<!-- Special Feature Box 3 -->
+				<div class="col-md-3" routerLink="/nutrients" *ngIf="config">
+					<div class="s-feature-box text-center">
+						<div class="mask-top">
+
+							<span><img src="{{config?.imagescommonpath}}/icon-sn.png"/></span>
+							<!-- Title -->
+							<h4>Search by Nutrients</h4>
+						</div>
+						<div class="mask-bottom">
+
+							<span><img src="{{config?.imagescommonpath}}/icon-sn-hover.png"/></span>
+							<!-- Title -->
+							<h4>Search by Nutrients</h4>
+							<!-- Text -->
+							<p><span style="font-weight:300;">Search based nutrients like Vitamin A, C, Carbohydrates etc., This wil list all the...</span></p>
+						</div>
+					</div>
+				</div>
+				<!-- Special Feature Box 4 -->
+				<div class="col-md-3" routerLink="/health-recommendation" *ngIf="config">
+					<div class="s-feature-box text-center">
+						<div class="mask-top">
+
+							<span><img src="{{config?.imagescommonpath}}/icon-hr.png"/></span>
+							<!-- Title -->
+							<h4>Health Recommendations</h4>
+						</div>
+						<div class="mask-bottom">
+
+							<span><img src="{{config?.imagescommonpath}}/icon-hr-hover.png"/></span>
+							<!-- Title -->
+							<h4>Health Recommendations</h4>
+							<!-- Text -->
+							<p><span style="font-weight:300;">Know which food is good for a particular body part and which food is not. Choose a body..</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--container-->
+		<!--desktop end-->
+
+        <!----mobile----->
+        <div  class="col-xs-12 visible-xs hidden-sm hidden-md clsMblBackground">
+        	  <h1 class="welcome">welcome to</h1>
+        	  <h1 class="like2eat">Like2Eat</h1>
+        	  <p class="text-center logo_caption_mbl">Your future food guide...</p>
+        	  <button class="btn btn-default" ui-sref="cathome">Start</button>
+        </div>
+     <!----mobile end----->
+
+
+ </div><!--row-->
+ <!-- </section> -->
+
+
+
+<!-- <ul>
+	<li *ngFor="let menu of config.main_menu">{{menu.Menu_Item | json}}
+		<ul>
+			<li *ngFor="let submenu of menu.Sub_Menu ">{{submenu | json}}</li>
+		</ul>
+	</li>
+</ul>
+{{config.main_menu | json}} -->

@@ -1,0 +1,45 @@
+<!-- <p>
+	nutrients works!
+</p>
+ -->
+<div class="row" id="page" >
+
+	<div class="page-header-hr hr-page-header-bg">
+		<div class="container">
+			<div class="col-md-12" *ngFor="let nutriCond of nutriSubMenuContent | dietfilter: 'toState' :filterBy">
+				<h1 class="title text-resize"><span><img src="{{config.imagescommonpath}}/hr-title-icon.png">&nbsp;</span>Foods that have {{nutriCond.name}}</h1>
+			</div>
+		</div>
+	</div>
+
+	<section id="about-us" class="page-section-ft ft-page-section-bg" data-animation="fadeInUp"><!--background-image-->
+	<!-- <div *ngFor= "let data of nutriData">{{data}}</div> -->
+<div class="container"><!--container-->
+		<!-- {{nutriData |json}} -->
+
+       <!--  start of desktop code -->
+      <div class="visible-md visible-lg hidden hidden">
+      <ul class="nav nav-tabs  nav-justified pointer">
+			<!-- {{subMenu.Sub_Menu}} -->
+			<!-- <li *ngFor="let cond of subMenu.Sub_Menu "> {{cond.smenu_item}}</li> -->
+			<li routerLink="{{nutriCond.toState}}" (click) = "selectedTab(nutriCond)"
+			*ngFor="let nutriCond of nutriSubMenuContent" #elem id={{nutriCond.Type_Name}}>
+			<a>
+			<!-- id:{{elem.id}}
+				{{typeName}}
+				{{currentroute}} -->
+				<!-- {{nutriCond | json}} -->
+				<img src="{{config.imagescommonpath}}/{{filterBy==nutriCond.toState?
+				nutriCond.nutriImg2 :nutriCond.nutriImg}}" class="img-responsive menu-icon"/>
+			</a>
+		</li>
+
+	</ul>
+  </div>
+
+<router-outlet ></router-outlet>
+   <!--  end of mobile code -->
+</div><!--container--->
+</section><!--background-image--->
+
+</div>

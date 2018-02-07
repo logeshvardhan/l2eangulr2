@@ -1,0 +1,28 @@
+<div><!--row-->
+
+<!-- config:{{config}} -->
+<!-- submenu:{{subMenuContent}} -->
+<!-- *ngFor="let nutri of subMenuContent | nutrifilter : filterByCondition" -->
+<div class="text-center" *ngFor="let nutri of subMenuContent">
+<!-- {{condition.type}} -->
+	<!-- {{subMenuContent | json}} -->
+
+	<div class="col-lg-3 col-md-3 col-xs-6 col-sm-6 visible-md visible-lg visible-sm visible-xs"
+	*ngIf="nutri.nutrientCategory == filterByCondition">
+		<div style="border:1px solid #eed366; padding-bottom:10px;">
+				<!-- <a  routerLink="listproductsbyfilter({fltrval:'nutriid~{{nutri.nutrientId}}~eq;',
+				crossflt:'filter',mainflt:'nutriclass',qrycond:'and', pgNumber:'0',pgSize:'{{pagesize}}'})"> -->
+					<a routerLink="/list/nutriid~{{nutri.nutrientId}}~eq;/filter/nutriclass/and/1">
+					<div style="padding:30px; line-height: 6em;"><img src="{{config.imagescommonpath}}/{{nutri.image}}"></div>
+					<h4 class="drecommen overflow-text">{{nutri.nutrientName}}</h4>
+				</a>
+				<hr class="lightgreen" />
+				<!-- routerLink="listproductsbyfilter({fltrval:'nutriid~{{nutri.nutrientId}}~eq;',
+				crossflt:'filter',mainflt:'nutriclass',qrycond:'and', pgNumber:'0',pgSize:'{{pagesize}}'})" -->
+				<button class="btn btn-dr" routerLink="/list/nutriid~{{nutri.nutrientId}}~eq;/filter/nutriclass/and/1">View Products</button>
+			</div>
+
+	</div>
+</div>
+
+</div><!--row-->

@@ -1,0 +1,114 @@
+<div id="product-list" class="col-md-12 visible-lg visible-md hidden-xs hidden-sm page-section-nv nv-page-section-bg">
+	<div class="container">
+		<div class="container-nv">
+			<!-- {{products }} -->
+
+			<!--desktop-->
+			<div class="flt_dtop">
+				<!--  total slices: {{totslices}} -->
+				<!--product-list-->
+				<div class="mixed-grid pad">
+					<div class="masonry-grid grid-col-4">
+					<!-- | paginate: { itemsPerPage: 4, currentPage: p } 
+					| paginate: { itemsPerPage: 12, currentPage: currPageNumber, totalItems: pageCount } -->
+						<div class="col-md-3 grid-item all" *ngFor="let product of products | paginate: { id: 'server', itemsPerPage: pageSlice, currentPage: currPageNumber, totalItems: totelProduct }">
+							<a  routerLink="productdetails({productID: '{{product.id}}'})"> 
+								<img src="{{imagePath}}/{{product.productImage}}" alt="" class="img-responsive img-effect" />
+								<h4 class="prodcaption">{{product.productName}}</h4>
+								<div class="img-overlay overlay-nv">      
+								</div>
+								<div class="figcaption">
+									<div class="caption-block">
+										<h4 class="caption-h-nv">{{product.productName}}</h4>
+										<p>{{(product.productDescription).substring(0,50)}}...</p>          
+									</div> 
+									<a href="{{imagePath}}/{{product.productImage}}" data-rel="prettyPhoto[portfolio]"> 
+										<i class="fa fa-search caption-nv"></i> </a> 
+										<a routerLink="productdetails({productID: '{{product.id}}'})"> 
+											<i class="fa fa-link caption-nv"></i> </a></div>
+										</a>   
+									</div>
+									<div id="fltToggle_dtop" class="slide_in_dtop left-filter_dtop">
+										<!-- <ng-include src="'app/home/filter_criteria_selection.html'" ng-controller="Product_Filter_Criteria"></ng-include> -->
+									</div>
+
+									<!--product-list----> 
+
+
+								</div>
+							</div>
+							<!--  </section>  -->
+						</div>
+						<!-- end of desktop code  -->
+						
+
+						<div class="clearfix"></div>
+						{{currPageNumber}}|{{pageCount}}
+						<div class="col-md-12 pagination-rework" align="center"> 
+							<!-- Slice Start: {{slice_start}} and Slice End: {{slice_end}} -->
+							<!-- <nav class="pagination-current">
+								<ul class="pagination">
+								<li ><a aria-label="Next" 
+								(click)="Prod_Prev_Slice()"> <span class="glyphicon glyphicon-fast-backward"
+										aria-hidden="true"></span> </a></li>
+										<li *ngIf="currPageNumber>1"><a (click)="previousPage()"><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a></li>									
+										<li [ngClass]="(currPageNumber==page)?'active':''"
+										*ngFor="let page of pages"> <a (click)="currentPage(page)">{{page}} <span class="sr-only"></span></a></li>
+										 <li *ngIf="currPageNumber<pageCount"><a aria-label="Next" (click)="nextProduct(page)"> <span class="glyphicon glyphicon-forward" 
+											aria-hidden="true"></span> </a></li>
+										<li ng-hide="current_pg==(page_count-1)||(totslices==1)"><a aria-label="Next" (click)="Prod_Next_Slice()"> <span class="glyphicon glyphicon-fast-forward"
+												aria-hidden="true"></span> </a></li>
+											</ul>
+										</nav> -->
+									</div>
+									<!-- <pagination-controls (pageChange)="getPage($event)"
+															id= "server"
+															maxSize="9"
+									id="server"></pagination-controls> -->
+
+	<div class="col-md-12 pagination-rework" align="center"> 
+							<!-- Slice Start: {{slice_start}} and Slice End: {{slice_end}} -->
+							<nav class="pagination-current">
+								<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+									<li *ngIf="pager.currentPage>1"><a aria-label="Next" 
+								(click)="getPage(1)"> <span class="glyphicon glyphicon-fast-backward"
+										aria-hidden="true"></span> </a></li>
+									<li *ngIf="pager.currentPage>1"><a (click)="getPage(pager.currentPage - 1)">
+										<span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a></li>								
+									<li [ngClass]="(currPageNumber==page)?'active':''"
+										*ngFor="let page of pager.pages" 
+										[ngClass]="{active:pager.currentPage === page}"> 
+										<a (click)="getPage(page)">{{page}} <span class="sr-only"></span></a></li>
+									<li *ngIf="pager.currentPage!=pager.totalPages"
+										><a aria-label="Next" (click)="getPage(pager.currentPage + 1)"> 
+										<span class="glyphicon 	glyphicon-forward" aria-hidden="true"></span> </a></li>
+									<li *ngIf="pager.currentPage!=pager.totalPages"><a aria-label="Next" 
+										(click)="getPage(pager.totalPages)"> 
+										<span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span> </a></li>
+											</ul>
+										</nav>
+									</div>
+	        <!-- <div class="text-center">           
+	           
+	            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+	                <li [ngClass]="{disabled:pager.currentPage === 1}">
+	                    <a (click)="getPage(1)">First</a>
+	                </li>
+	                <li [ngClass]="{disabled:pager.currentPage === 1}">
+	                    <a (click)="getPage(pager.currentPage - 1)">Previous</a>
+	                </li>
+	                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+	                    <a (click)="getPage(page)">{{page}}</a>
+	                </li>
+	                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+	                    <a (click)="getPage(pager.currentPage + 1)">Next</a>
+	                </li>
+	                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+	                    <a (click)="getPage(pager.totalPages)">Last</a>
+	                </li>
+	            </ul>
+	        </div>	    -->
+
+								</div>
+							</div>
+						</div>

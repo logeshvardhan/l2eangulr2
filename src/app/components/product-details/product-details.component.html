@@ -1,0 +1,461 @@
+<div class="row">
+  <div class="visible-md visible-lg hidden-xs hidden-sm">
+    <!---new-desktop--->
+    <div class="page-header-nv nv-page-header-bg">
+      <div class="container">
+        <h1 class="title"><span><img src="{{imagescommonpath}}/nv-title-icon.png">&nbsp;</span>Nutrition Value In Fruits &amp; Vegetables</h1>
+      </div>
+    </div>
+    <!--details-contents--->
+    <section id="works" class="page-section-nv nv-page-section-bg" data-animation="fadeInUp">
+
+      <div class="container">
+
+        <!--deitrecom-->
+        <div class="section-title-nv">
+          <!-- Heading -->
+          <!-- {{product|json}} -->
+          <h2 class="title" align="center">{{product?.productName ? product?.productName : "-"}}</h2>
+        </div>
+        <!-- {{config?.imagesproductpath}} -->
+        <div class="row">
+          <div class="col-md-12">
+            <div align="center">
+              <div><img src="{{imagesproductpath}}/{{product?.productImage}}" class="img-effect"></div>
+              <P style=" margin-top:20px; width:80%; text-align:center; ">{{product?.productDescription ? product?.productDescription : "-"}}.</P>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <!--  TAB {{tab}} -->
+          <div class="col-md-12">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <ul class="list-inline">
+                    <li>
+                      <a (click)="tab='Basic'" id="item3"> <img src="{{imagescommonpath}}/{{tab=='Basic'?'nv-basic-info-hover.png':'icon-sn.png'}}" class="img-responsive"></a>
+                    </li>
+                    <li>
+                      <a (click)="tab='Diet'" id="item1"><img src="{{imagescommonpath}}/{{tab=='Diet'?'nv-diet-recommendations-hover.png':'icon-dr.png'}}" class="img-responsive"></a>
+                    </li>
+                    <li>
+                      <a (click)="tab='Health'" id="item2"><img src="{{imagescommonpath}}/{{tab=='Health'?'nv-health-recommendations-hover.png':'icon-hr.png'}}" class="img-responsive"></a>
+                    </li>
+                    <li>
+                      <a (click)="tab='Nutri'" id="item4"> <img src="{{imagescommonpath}}/{{tab=='Nutri'?'nv-nutritional-info-hover.png':'icon-nv.png'}}" class="img-responsive"></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div class="container">
+          <div class="container-nv">
+
+
+            <!---basic-information-->
+            <div *ngIf="tab=='Basic'">
+
+              <div class="section-title-nv-detail">
+                <h2 class="title"><img src="{{imagescommonpath}}/nv-basic-info-icon.png">&nbsp;<span style="font-weight:400;">Basic Information</span></h2>
+                <hr>
+              </div>
+
+              <section id="addition-info">
+                <!--basic-information-content-->
+                <div class="container" *ngIf="product">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-6">
+                      <div class="section-title-nv-detail">
+                        <!-- Heading -->
+                        <h5 class="title">Health Benefits</h5>
+                      </div>
+                      <ul class="list-unstyled">
+                        <li class="list-group-item" *ngFor="let benefit of benefits ">{{benefit}}</li>
+                        <!--<li ng-show="benefits.length>4"  class="benefit-more"><a href="" ng-click="chgMoreLess()">...{{showmoreless}}</a></li>-->
+                      </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                      <div>
+
+
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>&nbsp;</th>
+                              <th>&nbsp;</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr cclass="active">
+                              <td><b>Product Classification</b></td>
+                              <td>{{product.productClassName}} <span ng-hide="product.productSubClass1Name==''">/</span> {{product.productSubClass1Name}} <span ng-hide="product.productSubClass2Name==''">/</span> {{product.productSubClass2Name}}
+                              </td>
+                            </tr>
+                            <tr class="active">
+                              <td><b>Product Alias (Other Names)</b></td>
+                              <td>{{product.aliasProductName ? product.aliasProductName : "-"}}</td>
+                            </tr>
+                            <tr class="">
+                              <td><b>Precautions (if any)</b></td>
+                              <td>{{product.precautions}}</td>
+                            </tr>
+                            <tr class="active">
+                              <td><b>Allergic Information(if any)</b></td>
+                              <td>{{product.alergicInformation}}</td>
+                            </tr>
+                            <tr class="">
+                              <td><b>Digestion Level</b></td>
+                              <td>{{product.digestionLevel}}</td>
+                            </tr>
+                            <!-- <tr>
+                              <td>&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr> -->
+                          </tbody>
+                        </table>
+                      </div>
+                      <br />
+                      <br />
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!--basic-information-content-->
+            </div>
+            <!---basic-information-end-->
+
+
+            <!--diet-recomment--->
+            <div *ngIf="tab=='Diet'">
+              <!--diet-recomment-div-->
+              <div class="section-title-nv-detail">
+                <h2 class="title"><img src="{{imagescommonpath}}/nv-diet-recommendation-icon.png">&nbsp;<span style="font-weight:400;">Diet Recommendations</span></h2>
+                <hr>
+              </div>
+              <!--table-->
+              <!-- ng-init="dietCondition.value='Medical Condition'" -->
+              <table class="table">
+                <tbody>
+                  <tr align="center">
+                    <td>
+                      <form>
+                        <div class="checkbox">
+                          <label>
+                          <span *ngFor="let dietcond of dietrecom">
+                            <input type="radio"  value="{{dietcond.Type_Name}}" [(ngModel)]="dietCondition.value" name="dietreco_dtop">
+                            <a class="clsHyperBlack" (click)="dietCondition.value=dietcond.Type_Name">{{dietcond.Type_Name}}</a>
+
+                           </span>
+                           </label>
+                        </div>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--table-->
+              <!--page-section-->
+              <section id="pricing" class="page-section">
+                <div class="container">
+                  <div class="row text-center">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="pricing pricing-nv light-bg">
+                        <!-- Title -->
+                        <div class="ribbon-wrapper">
+                          <div class="ribbon green">&nbsp;</div>
+                        </div>
+                        <div align="center"><img src="{{imagescommonpath}}/nv-diet-recommendations-icon-1.png"></div>
+                        <div class="title"> Eat Adequately </div>
+                        <ul class="options">
+                          <!-- Item List -->
+                          <!-- <li ng-repeat="dietrecoVal in dietrecoData | filter:{Type_Name:dietCondition.value,value:1}" class="active"> {{dietrecoVal.condition}} </li> -->
+                          <li *ngFor="let dietrecoVal of dietrecoData" class="active"> {{dietrecoVal.condition}} </li>
+
+                        </ul>
+                      </div>
+                      <!-- .pricing -->
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="pricing pricing-nv light-bg">
+                        <!-- Title -->
+                        <div class="ribbon-wrapper">
+                          <div class="ribbon blue">&nbsp;</div>
+                        </div>
+                        <div align="center"><img src="{{imagescommonpath}}/nv-diet-recommendations-icon-1.png"></div>
+                        <div class="title"> Eat Moderately </div>
+                        <ul class="options">
+                          <!-- Item List -->
+                          <!-- <li ng-repeat="dietrecoVal in dietrecoData | filter:{Type_Name:dietCondition.value,value:2}" class="active"> {{dietrecoVal.condition}} </li> -->
+
+                          <li *ngFor="let dietrecoVal of dietrecoData" class="active"> {{dietrecoVal.condition}} </li>
+
+                        </ul>
+                      </div>
+                      <!-- .pricing -->
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="pricing pricing-nv light-bg">
+                        <!-- Title -->
+                        <div class="ribbon-wrapper">
+                          <div class="ribbon yellow">&nbsp;</div>
+                        </div>
+                        <div align="center"><img src="{{imagescommonpath}}/nv-diet-recommendations-icon-1.png"></div>
+                        <div class="title"> Eat Limited </div>
+                        <ul class="options">
+                          <!-- Item List -->
+                          <!-- <li class="active" ng-repeat="dietrecoVal in dietrecoData | filter:{Type_Name:dietCondition.value,value:3}"> {{dietrecoVal.condition}} </li> -->
+                          <li *ngFor="let dietrecoVal of dietrecoData" class="active"> {{dietrecoVal.condition}} </li>
+
+                        </ul>
+                      </div>
+                      <!-- .pricing -->
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="pricing pricing-nv light-bg">
+                        <!-- Title -->
+                        <div class="ribbon-wrapper">
+                          <div class="ribbon red">&nbsp;</div>
+                        </div>
+                        <div align="center"><img src="{{imagescommonpath}}/nv-diet-recommendations-icon-1.png"></div>
+                        <div class="title"> Restricted </div>
+                        <ul class="options">
+                          <!-- Item List -->
+                          <!-- <li ng-repeat="dietrecoVal in dietrecoData | filter:{Type_Name:dietCondition.value,value:4}" class="active"> {{dietrecoVal.condition}} </li> -->
+                          <li *ngFor="let dietrecoVal of dietrecoData" class="active"> {{dietrecoVal.condition}} </li>
+                        </ul>
+                      </div>
+                      <!-- .pricing -->
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!---page-section-->
+
+            </div>
+            <!--diet-recomment-div-ends-->
+
+
+
+
+            <!---health-recommendation-->
+            <div *ngIf="tab=='Health'">
+              <div class="section-title-nv-detail">
+                <h2 class="title"><img src="{{imagescommonpath}}/nv-health-recommendation-icon.png">&nbsp;<span style="font-weight:400;">Health Recommendations</span></h2>
+                <hr>
+              </div>
+
+              <!---page-section-->
+              <section id="pricing" class="page-section">
+                <div class="container">
+                  <div class="row text-center">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="pricing pricing-nv light-bg">
+                        <!-- Title -->
+                        <div class="ribbon-wrapper">
+                          <div class="ribbon green">&nbsp;</div>
+                        </div>
+                        <div align="center"><img src="{{imagescommonpath}}/nv-diet-recommendations-icon-1.png"></div>
+                        <div class="title"> Healthy For </div>
+                        <ul class="options">
+                          <!-- Item List -->
+                          <!-- <li ng-repeat="dietrecoVal in dietrecoData | filter:{Type_Name:dietCondition.value,value:1}" class="active"> {{dietrecoVal.condition}} </li> -->
+                          <li *ngFor="let dietrecoVal of dietrecoData" class="active"> {{dietrecoVal.condition}} </li>
+                        </ul>
+                      </div>
+                      <!-- .pricing -->
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="pricing pricing-nv light-bg">
+                        <!-- Title -->
+                        <div class="ribbon-wrapper">
+                          <div class="ribbon blue">&nbsp;</div>
+                        </div>
+                        <div align="center"><img src="{{imagescommonpath}}/nv-diet-recommendations-icon-1.png"></div>
+                        <div class="title"> Unhealthy For</div>
+                        <ul class="options">
+                          <!-- Item List -->
+                          <!-- <li ng-repeat="dietrecoVal in dietrecoData | filter:{Type_Name:dietCondition.value,value:2}" class="active"> {{dietrecoVal.condition}} </li> -->
+                          <li *ngFor="let dietrecoVal of dietrecoData" class="active"> {{dietrecoVal.condition}} </li>
+
+                        </ul>
+                      </div>
+                      <!-- .pricing -->
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="pricing pricing-nv light-bg">
+                        <!-- Title -->
+                        <div class="ribbon-wrapper">
+                          <div class="ribbon yellow">&nbsp;</div>
+                        </div>
+                        <div align="center"><img src="{{imagescommonpath}}/nv-diet-recommendations-icon-1.png"></div>
+                        <div class="title"> Recommended </div>
+                        <ul class="options">
+                          <!-- Item List -->
+                          <!-- <li class="active" ng-repeat="dietrecoVal in dietrecoData | filter:{Type_Name:dietCondition.value,value:3}"> {{dietrecoVal.condition}} </li> -->
+                          <li *ngFor="let dietrecoVal of dietrecoData" class="active"> {{dietrecoVal.condition}} </li>
+
+                        </ul>
+                      </div>
+                      <!-- .pricing -->
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                      <div class="pricing pricing-nv light-bg">
+                        <!-- Title -->
+                        <div class="ribbon-wrapper">
+                          <div class="ribbon red">&nbsp;</div>
+                        </div>
+                        <div align="center"><img src="{{imagescommonpath}}/nv-diet-recommendations-icon-1.png"></div>
+                        <div class="title">Not Recommended </div>
+                        <ul class="options">
+                          <!-- Item List -->
+                          <!-- <li ng-repeat="dietrecoVal in dietrecoData | filter:{Type_Name:dietCondition.value,value:4}" class="active"> {{dietrecoVal.condition}} </li> -->
+                          <li *ngFor="let dietrecoVal of dietrecoData" class="active"> {{dietrecoVal.condition}} </li>
+                        </ul>
+                      </div>
+                      <!-- .pricing -->
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!---page-section-->
+            </div>
+            <!---health-recommendation-end-->
+
+
+            <!--NUTRITIONAL-INFORMATION-->
+            <div *ngIf="tab=='Nutri'">
+
+              <div class="section-title-nv-detail">
+                <h2 class="title"><img src="{{imagescommonpath}}/nv-nut-info-icon.png">&nbsp;<span style="font-weight:400;"> NUTRITIONAL INFORMATION</span></h2>
+                <hr>
+              </div>
+
+              <!--table-->
+              <table ng-init="rdvType='Adults'" class="table">
+                <thead>
+                  <tr>
+                    <th>
+                      <form>
+                        <div class="checkbox">
+                          <label><span>Serving Size 100.0 g :</span>&nbsp;&nbsp;
+          <input type="radio" value="Adults" ng-model="rdvType" name="rdvType" >
+           <a href=""  ng-click="rdvType='Adults'">Adults & Kids 4+</a>  &nbsp;&nbsp;
+         <input type="radio" value="Infant" ng-model="rdvType" name="rdvType" >
+         <a href=""  ng-click="rdvType='Infant'">Infants</a>&nbsp;&nbsp;
+         <input type="radio" value="Kid" ng-model="rdvType" name="rdvType" >
+         <a href="" ng-click="rdvType='Kid'">Kids < 4Yrs</a>&nbsp;&nbsp;
+         <input type="radio" value="Pregnant" ng-model="rdvType" name="rdvType">
+         <a href="" ng-click="rdvType='Pregnant'">Pregnant</a>
+           </label>
+                        </div>
+                      </form>
+                    </th>
+                    <th></th>
+                    <th>&nbsp;</th>
+                  </tr>
+                </thead>
+
+
+                <tbody>
+                  <tr class="active">
+                    <td><strong>Amount Per Serving</strong></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Calories {{product.energy}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="active line-1">
+                    <td><strong>Nutrients</strong></td>
+                    <td><strong>Value</strong></td>
+                    <td><strong>%Daily Value</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Carbohydrates</strong></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                    <!-- | filter:{nutrientCategory:'Carbohydrates' -->
+                  <tr class="active" *ngFor="let nutri of product.nutrition">
+                    <td>{{nutri.nutrientName}}</td>
+                    <td>{{nutri.value}} {{nutri.units}}</td>
+                    <td>{{nutri.rdvAdultskidsGT4Y}}</td>
+                  </tr>
+                  <tr class="line-2">
+                    <td><span>Fats</span></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                    <!-- | filter:{nutrientCategory:'PrFatsotein' -->
+                  <tr class="active" *ngFor="let nutri of product.nutrition">
+                    <td>{{nutri.nutrientName}}</td>
+                    <td>{{nutri.value}} {{nutri.units}}</td>
+                    <td>{{nutri.rdvAdultskidsGT4Y}} </td>
+                  </tr>
+                  <tr class="line-2">
+                    <td><strong>Protein</strong></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <!-- | filter:{nutrientCategory:'Protein' -->
+                  <tr class="active" *ngFor="let nutri of product.nutrition">
+                    <td>{{nutri.nutrientName}}</td>
+                    <td>{{nutri.value}} {{nutri.units}}</td>
+                    <td>{{nutri.rdvAdultskidsGT4Y}}
+                      <!-- <span>{{nutri.rdvAdultskidsGT4YValue}}</span> --></td>
+                  </tr>
+                  <tr class="line-2">
+                    <td><strong>Vitamins</strong></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <!-- | filter:{nutrientCategory:'Vitamins' -->
+                  <tr class="active" *ngFor="let nutri of product.nutrition">
+                    <td>{{nutri.nutrientName}}</td>
+                    <td>{{nutri.value}} {{nutri.units}}</td>
+                    <td ng-if="rdvType=='Adults'">{{nutri.rdvAdultskidsGT4Y}}</td>
+                    <td ng-if="rdvType=='Infant'">{{nutri.rdvInfants}}</td>
+                    <td ng-if="rdvType=='Kid'">{{nutri.rdvKidsLT4Y}} </td>
+                    <td ng-if="rdvType=='Pregnant'"></td>
+                  </tr>
+                  <tr class="line-2">
+                    <td><strong>Minerals</strong></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <!-- | filter:{nutrientCategory:'Mineral' -->
+                  <tr class="active" *ngFor="let nutri of product.nutrition">
+                    <td>{{nutri.nutrientName}}</td>
+                    <td>{{nutri.value}} {{nutri.units}}</td>
+                    <td ng-if="rdvType=='Adults'"> {{nutri.rdvAdultskidsGT4Y}}</td>
+                    <td ng-if="rdvType=='Infant'">{{nutri.rdvInfants}}</td>
+                    <td ng-if="rdvType=='Kid'">{{nutri.rdvKidsLT4Y}}</td>
+                    <td ng-if="rdvType=='Pregnant'"> {{nutri.rdvPrgntLactWmn}}</td>
+                  </tr>
+
+
+                </tbody>
+              </table>
+              <!---table-->
+
+            </div>
+            <!---NUTRITIONAL INFORMATION-end-->
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</div>

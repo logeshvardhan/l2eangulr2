@@ -1,0 +1,43 @@
+<div class="row" id="page"><!--row---->
+
+<div class="page-header-nv nv-page-header-bg">
+    <div class="container">
+    <div class="col-md-12">
+      <h1 class="title text-resize"><span><img src="./assets/images/common/nv-title-icon.png">&nbsp;</span>Nutrition Value In</h1>
+      </div>
+    </div>
+ </div>
+
+<section id="about-us" class="page-section-nv nv-page-section-bg" data-animation="fadeInUp"><!--background-image--->
+<!--container--->
+<div class="container">
+      
+      <div class="row"><!--row-->    <!-- {{config.main_menu[0].Sub_Menu}} -->
+
+      <!-- <div *ngFor="let menu of subMenu.Sub_Menu">{{menu}}</div> -->
+      <div class=" col-md-3 ol-lg-3 col-xs-6 col-sm-6 text-center" 
+      *ngFor="let submenu of subMenu.Sub_Menu">
+          <a routerLink="{{submenu.toState}}" style="text-decoration: none;">
+          <div style="padding:30px; line-height: 6em;"><img src="{{config.imagescommonpath}}/{{submenu.mnuimage2}}"></div>
+          <h4 class="overflow-text">{{submenu.smenu_item}}</h4>
+          </a>
+          <button class="btn btn-nv" routerLink="{{submenu.toState}}">View Products</button>
+          <p style="color:#fff;">&nbsp;</p>
+          <hr class="lightgreen" />
+          
+     </div>        
+     </div><!--row-->
+             
+</div><!--container--->
+</section><!--background-image--->
+
+    
+  <div><!--row----> 
+
+  
+  
+  
+  
+  
+  
+  
